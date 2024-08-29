@@ -9,6 +9,7 @@ client.on('ready', () => {
 
 const { MongoStore } = require('wwebjs-mongo');
 const mongoose = require('mongoose');
+const { default: axios } = require('axios');
 
 client.on('qr', qr => {
     qrcode.generate(qr, {small: true});
@@ -19,14 +20,19 @@ client.on('message_create', message => {
 });
 
 client.on('message_create', message => {
-	if (message.body === '!ping') {
-		// send back "pong" to the chat the message was sent in
-		client.sendMessage(message.from, 'pong');
+	if (message.body === 'Good morning') {
+		client.sendMessage(message.from, 'Very Good morning');
 	}
-    if (message.body === 'hii') {
-		// send back "pong" to the chat the message was sent in
-		message.reply("hello");
-	}
+    if(message.body === "Hii")
+    {
+        message.reply("Hello");
+    }
+    
+
+    
+
+    
+    
 
 });
 
@@ -34,4 +40,5 @@ client.on('message_create', message => {
 
 
 client.initialize();
+
 
